@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practice/change_container_size/viewModel/container_info_notifier.dart';
 
+import '../../countup/riverpod_my_home_page.dart';
+
 class RiverpodhangeContainerSize extends ConsumerWidget {
   const RiverpodhangeContainerSize({Key? key}) : super(key: key);
 
@@ -10,6 +12,7 @@ class RiverpodhangeContainerSize extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final containerInfoModel = ref.watch(containerInfoProvider);
     final containerInfoNotifier = ref.watch(containerInfoProvider.notifier);
+    int _counter = ref.watch(counutUpProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('(S)ChangeContainerSize'),
@@ -21,6 +24,7 @@ class RiverpodhangeContainerSize extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(_counter.toString()),
                 Expanded(child: Container()),
                 Container(
                   width: containerInfoModel.width,
